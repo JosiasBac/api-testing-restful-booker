@@ -8,3 +8,6 @@ __pycache__/
 
 # Archivos de Pytest
 .pytest_cache/
+
+#Archivos temporales
+report.html

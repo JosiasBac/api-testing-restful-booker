@@ -1,18 +1,40 @@
-# API Testing Framework - Restful Booker
+# API Automated Testing Framework - Restful Booker
 
-Este proyecto es un framework de pruebas automatizadas para la API de [Restful Booker](https://restful-booker.herokuapp.com/), construido con **Python, Pytest y Requests**.
+![Automated API Tests](https://github.com/TU_USUARIO/api-testing-restful-booker/actions/workflows/api-tests.yml/badge.svg)
+![Python Version](https://img.shields.io/badge/python-3.12-blue)
+![Pytest](https://img.shields.io/badge/tested%20with-pytest-orange)
 
-## Objetivo del Proyecto
-Demostrar mis habilidades como QA Automation Junior diseñando casos de prueba, gestionando peticiones HTTP y validando respuestas (Status Codes, JSON Schemas y Tiempos de respuesta).
+Framework de pruebas automatizadas para la API REST [Restful Booker](https://restful-booker.herokuapp.com/), desarrollado con **Python**, **Pytest** y **Requests**, e integrado en un pipeline de **CI/CD con GitHub Actions**.
 
-## Casos de Prueba
-Antes de automatizar, he definido los siguientes escenarios criticos de negocio:
+---
 
-1. **Autenticacion:**
-   - [ ] Verificar que un usuario valido recibe un Token `200 OK`.
-   - [ ] Verificar que credenciales invalidas devuelven un error manejado.
-2. **Gestion de Reservas (CRUD):**
-   - [ ] Crear una reserva valida (`POST /booking`).
-   - [ ] Obtener la reserva recien creada (`GET /booking/{id}`).
-   - [ ] Modificar la reserva (`PUT /booking/{id}`).
-   - [ ] Eliminar la reserva (`DELETE /booking/{id}`).
+## Stack Tecnológico
+* **Lenguaje:** Python 3.12
+* **Peticiones HTTP:** Requests
+* **Framework de Pruebas:** Pytest
+* **Reportes:** Pytest-HTML
+* **CI/CD:** GitHub Actions
+
+---
+
+## Arquitectura y Patrones Aplicados
+* **Patrón AAA (Arrange, Act, Assert):** Estructura clara en cada caso de prueba.
+* **Pytest Fixtures (`conftest.py`):** Reutilización eficiente de autenticación y creación de datos dinámicos.
+* **Centralización de Configuración:** Gestión limpia de URLs y entornos en `utils/api_client.py`.
+
+---
+
+## Casos de Prueba Cubiertos (CRUD)
+- [x] **Autenticación:** Generación correcta de token de acceso (`POST /auth`).
+- [x] **Crear Reserva:** Validación de payloads anidados y código de respuesta 200 (`POST /booking`).
+- [x] **Consultar Reserva:** Obtención de datos mediante ID dinámico (`GET /booking/{id}`).
+- [x] **Eliminar Reserva:** Borrado seguro pasando Token en headers (`DELETE /booking/{id}`).
+
+---
+
+## Cómo Ejecutar el Proyecto Localmente
+
+1. **Clonar el repositorio:**
+   ```bash
+   git clone [https://github.com/TU_USUARIO/api-testing-restful-booker.git](https://github.com/JosiasBac/api-testing-restful-booker.git)
+   cd api-testing-restful-booker
