@@ -76,3 +76,34 @@ def test_delete_booking(auth_token, created_booking_id):
     
     assert response.status_code in [200, 201], f"Error al eliminar la reserva: {response.status_code}"
     print(f"\n¡Reserva {created_booking_id} eliminada con éxito!")
+
+
+def test_put_booking(auth_token,created_booking_id):
+    """ 
+    Prueba de poder editar una reserva con Token y ID
+    """
+
+    url = f"{BASE_URL}/booking/{created_booking_id}"
+
+    headers = {
+        "Content-Type": "application/json",
+        "Accept": "application/json",
+        "Cookie": f"token={auth_token}"
+    }
+
+    update_payload = {
+        "firstname": "James",
+        "lastname": "Brown",
+        "totalprice": 150,
+        "depositpaid": True,
+        "bookingdates": {
+            "checkin": "2026-03-01",
+            "checkout": "2026-03-10"
+            },
+        "additionalneeds": "Lunch"
+    }
+
+    response = requests.put(url,headers=headers, json=update_payload)
+
+    assert response.status_code in [200,201], f"Error al editar la reserva: {response.status_code}"
+    print(f"\n¡Reserva {created_booking_id} editada con exito!")
